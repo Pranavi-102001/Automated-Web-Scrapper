@@ -82,7 +82,7 @@ def _static_fetch(url: str, timeout: int) -> str:
     response = requests.get(url, headers=HEADERS, timeout=timeout)
     response.raise_for_status()
 
-    soup = BeautifulSoup(response.text, "lxml")
+    soup = BeautifulSoup(response.text, "html.parser")
 
     # Remove script / style noise
     for tag in soup(["script", "style", "noscript", "meta", "head"]):
